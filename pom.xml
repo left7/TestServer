@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>test</groupId>
+  <artifactId>TestServer</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>TestServer Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <payaramicro.maven.plugin.version>1.0.5</payaramicro.maven.plugin.version>
+    <payaramicro.version>5.192</payaramicro.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>TestServer</finalName>
+    <plugins>
+        <plugin>
+            <groupId>fish.payara.maven.plugins</groupId>
+            <artifactId>payara-micro-maven-plugin</artifactId>
+            <version>${payaramicro.maven.plugin.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>start</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <payaraVersion>${payaramicro.version}</payaraVersion>
+                <deployWar>true</deployWar>
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
+</project>
